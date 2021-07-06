@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -11,8 +10,9 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario:Usuario;
-  dni: string;
+  usuario={
+    dni:''
+  }
 
   constructor(public router: Router,
               public loginService:LoginService) { }
@@ -20,12 +20,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(form:NgForm){
-    if(form.invalid){return;}
+  ingresar(forma:NgForm){
+    if(forma.invalid){return;}
 
+    console.log(forma.value.dni);
 
-    localStorage.setItem('dni', this.dni);
-    this.router.navigate(['/home']);
+    this.loginService.guardarStorage(forma.value.dni);
+
   }
 
 }

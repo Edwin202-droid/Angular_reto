@@ -8,8 +8,8 @@
 <h2>Productos: </h2>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-    <div class="card" *ngFor="let producto of productos">
+    <div class="col" *ngFor="let producto of productos">
+    <div class="card">
         <img [src]="producto.image" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{producto.title}}</h5>

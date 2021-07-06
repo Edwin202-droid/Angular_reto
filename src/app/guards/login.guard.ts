@@ -13,7 +13,7 @@ export class LoginGuard implements CanActivate {
 
   canActivate() {
     
-    if(this.loginService.estaLogueado){
+    if(this.loginService.estaLogueado()){
       return true;
     }
     else{

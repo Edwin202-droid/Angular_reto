@@ -1,36 +1,34 @@
-<div class="limiter animated fadeInLeft">
-    <div class="container-login100">
-        <div class="wrap-login100 p-t-50 p-b-90">
-            <form (ngSubmit)="login( f )"
-                #f="ngForm"
-                class="login100-form validate-form flex-sb flex-w">
 
-                <span class="login100-form-title p-b-51">
-                    Login
-                </span>
+<h2>Login: </h2>
+<hr>
 
-                <span *ngIf="f.submitted && f.controls['dni'].errors"
-                    class="text-danger animated fadeIn">El correo es obligatorio</span> 
-                <div class="wrap-input100 m-b-16">
-                    <input class="input100" 
-                           type="text" 
-                           name="dni"
-                           [(ngModel)]="usuario.dni"
-                           required
-                           dni
-
-                           placeholder="dni">
-
-                    <span class="focus-input100"></span>
-                </div>
-
-                <div class="container-login100-form-btn m-t-17">
-                    <button class="login100-form-btn" type="submit">
-                        Ingresar
-                    </button>
-                </div>
-
-            </form>
+<form autocomplete="off" (ngSubmit)="ingresar(forma)" #forma="ngForm">
+    <div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">DNI</label>
+            <div class="col-8">
+                <input class="form-control" 
+                       type="text"
+                       name="dni"
+                       [class.is-invalid]="dni.invalid && dni.touched"
+                       [ngModel]="usuario.dni"
+                       placeholder="Introduzca un dni"
+                       required
+                       minlength="8"
+                       maxlength="8"
+                       #dni="ngModel">
+                <small *ngIf="dni.invalid && dni.touched"
+                    class="form-text text-danger">DNI invalido</small>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Ingresar
+      </button>
+    </div>
+  </div>
+</form>
